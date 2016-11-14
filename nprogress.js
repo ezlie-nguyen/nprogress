@@ -27,7 +27,7 @@
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
     parent: 'body',
-    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+    template: '<div className="bar-background"><div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div></div>'
   };
 
   /**
@@ -164,25 +164,25 @@
       return;
     } else {
       if (typeof amount !== 'number') {
-        if (n >= 0 && n < 0.25) {
+        if (n >= 0 && n < 0.35) {
           // Start out between 3 - 6% increments
           amount = (Math.random() * (5 - 3 + 1) + 3) / 100;
-        } else if (n >= 0.25 && n < 0.65) {
+        } else if (n >= 0.35 && n < 0.50) {
           // increment between 0 - 3%
           amount = (Math.random() * 3) / 100;
-        } else if (n >= 0.65 && n < 0.9) {
+        } else if (n >= 0.50 && n < 0.65) {
           // increment between 0 - 2%
           amount = (Math.random() * 2) / 100;
-        } else if (n >= 0.9 && n < 0.99) {
+        } else if (n >= 0.65 && n < 0.80) {
           // finally, increment it .5 %
           amount = 0.005;
         } else {
-          // after 99%, don't increment:
-          amount = 0;
+          // after 80%, don't increment:
+          amount = 0.0005;
         }
       }
 
-      n = clamp(n + amount, 0, 0.994);
+      n = clamp(n + amount, 0, 0.90);
       return NProgress.set(n);
     }
   };
